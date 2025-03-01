@@ -1,0 +1,28 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[python]": {
+      "editor.defaultFormatter": "ms-python.black-formatter",
+      "editor.formatOnSave": true
+    }
+    // "liveSassCompile.settings.generateMap": false,
+    // "liveSassCompile.settings.formats": [
+    //   {
+    // 	//   "format": "expanded",
+    // 	"format": "compressed",
+    // 	"extensionName": ".css",
+    // 	"savePath": "~/../"
+    //   }
+    // ],
+    // "liveSassCompile.settings.excludeList": [
+    //   "htdocs/wp-content/plugins/**/*.scss"
+    // ]
+  }
+}
