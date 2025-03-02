@@ -26,6 +26,30 @@
       "presentation": {
         "reveal": "always"
       }
+    },
+    {
+      "label": "venv ubuntu",
+      "type": "shell",
+      "command": "source myenv/bin/activate",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "venv win",
+      "type": "shell",
+      "command": "myenv/bin/activate",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "reveal": "always"
+      }
     }
   ]
 }
