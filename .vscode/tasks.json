@@ -16,9 +16,21 @@
       }
     },
     {
+      "label": "Run Django ubuntu",
+      "type": "shell",
+      "command": "cd app ; python3 manage.py runserver",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
       "label": "Django migrate",
       "type": "shell",
-      "command": "python manage.py makemigrations ; python manage.py migrate",
+      "command": "python3 manage.py makemigrations ; python3 manage.py migrate",
       "group": {
         "kind": "build",
         "isDefault": false
