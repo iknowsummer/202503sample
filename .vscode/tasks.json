@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Run Django Server",
+      "label": "Run Django win",
       "type": "shell",
       "command": "cd app ; python manage.py runserver",
       "group": {
