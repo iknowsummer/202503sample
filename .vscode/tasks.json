@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Run Django Server",
+      "label": "Run Django win",
       "type": "shell",
       "command": "cd app ; python manage.py runserver",
       "group": {
@@ -16,9 +16,45 @@
       }
     },
     {
+      "label": "Run Django ubuntu",
+      "type": "shell",
+      "command": "cd app ; python3 manage.py runserver",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
       "label": "Django migrate",
       "type": "shell",
-      "command": "python manage.py makemigrations ; python manage.py migrate",
+      "command": "python3 manage.py makemigrations ; python3 manage.py migrate",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "venv ubuntu",
+      "type": "shell",
+      "command": "source myenv/bin/activate",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "venv win",
+      "type": "shell",
+      "command": "myenv/bin/activate",
       "group": {
         "kind": "build",
         "isDefault": false
