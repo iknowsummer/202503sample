@@ -1,5 +1,6 @@
 import os
 import sqlite3
+from time import sleep
 import pandas as pd
 
 pd.set_option("display.unicode.east_asian_width", True)
@@ -29,6 +30,9 @@ def main():
 
     # 住所録をSQLiteデータベースに登録（置換）
     to_sqlite(address_df)
+
+    print("住所録の登録処理が完了しました。")
+    sleep(3)
 
 
 def to_sqlite(df):
