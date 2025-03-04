@@ -6,10 +6,17 @@
   ],
   "settings": {
     "editor.insertSpaces": true,
-    "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "html.format.enable": true,
+    "html.format.extraLiners": "body,footer,section,nav,article,aside",
+    "html.format.maxPreserveNewLines": 1,
     "[python]": {
       "editor.defaultFormatter": "ms-python.black-formatter",
+      "editor.formatOnSave": true
+    },
+    "[html]": {
+      "editor.defaultFormatter": "vscode.html-language-features",
       "editor.formatOnSave": true
     }
     // "liveSassCompile.settings.generateMap": false,
