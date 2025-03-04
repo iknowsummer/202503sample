@@ -18,18 +18,16 @@
     "[html]": {
       "editor.defaultFormatter": "vscode.html-language-features",
       "editor.formatOnSave": true
-    }
-    // "liveSassCompile.settings.generateMap": false,
-    // "liveSassCompile.settings.formats": [
-    //   {
-    // 	//   "format": "expanded",
-    // 	"format": "compressed",
-    // 	"extensionName": ".css",
-    // 	"savePath": "~/../"
-    //   }
-    // ],
-    // "liveSassCompile.settings.excludeList": [
-    //   "htdocs/wp-content/plugins/**/*.scss"
-    // ]
+    },
+    "liveSassCompile.settings.generateMap": false,
+    "liveSassCompile.settings.formats": [
+      {
+        "format": "expanded",
+        "extensionName": ".css",
+        "savePath": "/app/app/static/css"
+      }
+    ],
+    "liveSassCompile.settings.includeItems": ["**/assets/scss/**/*.scss"],
+    "liveSassCompile.settings.excludeList": ["**/node_modules/**"]
   }
 }
