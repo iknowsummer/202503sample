@@ -1,37 +1,38 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <title>顧客一覧</title>
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
-  </head>
-  <body>
-    <h1>顧客一覧</h1>
-    <table border="1">
-      <tr>
-        <th>id</th>
-        <th>顧客名</th>
-        <th>電話番号</th>
-        <th>住所</th>
-        <th>詳細リンク</th>
-      </tr>
-      {% for customer in customers %}
-      <tr>
-        <td>{{ customer.id }}</td>
-        <td>{{ customer.company_name }}</td>
-        <td>{{ customer.phone_number }}</td>
-        <td>
-          {{ customer.address1 }}<br />
-          {{ customer.address2 }}
-        </td>
-        <td><a href="/customer/{{ customer.id }}">詳細へ</a></td>
-      </tr>
-      {% empty %}
-      <tr>
-        <td colspan="4">登録されている顧客はいません。</td>
-      </tr>
-      {% endfor %}
-    </table>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>顧客一覧</title>
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+  <h1>顧客一覧</h1>
+  <table border="1">
+    <tr>
+      <th>id</th>
+      <th>顧客名</th>
+      <th>電話番号</th>
+      <th>住所</th>
+      <th>詳細リンク</th>
+    </tr>
+    {% for customer in customers %}
+    <tr>
+      <td>{{ customer.id }}</td>
+      <td>{{ customer.company_name }}</td>
+      <td>{{ customer.phone_number }}</td>
+      <td>
+        {{ customer.address1 }}<br />
+        {{ customer.address2 }}
+      </td>
+      <td><a href="/customer/{{ customer.id }}">詳細へ</a></td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="4">登録されている顧客はいません。</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
 </html>

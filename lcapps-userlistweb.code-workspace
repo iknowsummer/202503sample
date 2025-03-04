@@ -6,23 +6,28 @@
   ],
   "settings": {
     "editor.insertSpaces": true,
-    "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "html.format.enable": true,
+    "html.format.extraLiners": "body,footer,section,nav,article,aside",
+    "html.format.maxPreserveNewLines": 1,
     "[python]": {
       "editor.defaultFormatter": "ms-python.black-formatter",
       "editor.formatOnSave": true
-    }
-    // "liveSassCompile.settings.generateMap": false,
-    // "liveSassCompile.settings.formats": [
-    //   {
-    // 	//   "format": "expanded",
-    // 	"format": "compressed",
-    // 	"extensionName": ".css",
-    // 	"savePath": "~/../"
-    //   }
-    // ],
-    // "liveSassCompile.settings.excludeList": [
-    //   "htdocs/wp-content/plugins/**/*.scss"
-    // ]
+    },
+    "[html]": {
+      "editor.defaultFormatter": "vscode.html-language-features",
+      "editor.formatOnSave": true
+    },
+    "liveSassCompile.settings.generateMap": false,
+    "liveSassCompile.settings.formats": [
+      {
+        "format": "expanded",
+        "extensionName": ".css",
+        "savePath": "/app/app/static/css"
+      }
+    ],
+    "liveSassCompile.settings.includeItems": ["**/assets/scss/**/*.scss"],
+    "liveSassCompile.settings.excludeList": ["**/node_modules/**"]
   }
 }
