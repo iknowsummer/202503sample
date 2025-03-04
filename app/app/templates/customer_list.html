@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>顧客一覧</title>
+  </head>
+  <body>
+    <h1>顧客一覧</h1>
+    <table border="1">
+      <tr>
+        <th>顧客名</th>
+        <th>メールアドレス</th>
+        <th>電話番号</th>
+        <th>住所</th>
+      </tr>
+      {% for customer in customers %}
+      <tr>
+        <td>{{ customer.name }}</td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.phone }}</td>
+        <td>{{ customer.address }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4">登録されている顧客はいません。</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
