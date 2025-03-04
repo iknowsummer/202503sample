@@ -12,7 +12,6 @@
       <tr>
         <th>id</th>
         <th>顧客名</th>
-        <th>メールアドレス</th>
         <th>電話番号</th>
         <th>住所</th>
         <th>詳細リンク</th>
@@ -20,10 +19,12 @@
       {% for customer in customers %}
       <tr>
         <td>{{ customer.id }}</td>
-        <td>{{ customer.name }}</td>
-        <td>{{ customer.email }}</td>
-        <td>{{ customer.phone }}</td>
-        <td>{{ customer.address }}</td>
+        <td>{{ customer.company_name }}</td>
+        <td>{{ customer.phone_number }}</td>
+        <td>
+          {{ customer.address1 }}<br />
+          {{ customer.address2 }}
+        </td>
         <td><a href="/customer/{{ customer.id }}">詳細へ</a></td>
       </tr>
       {% empty %}
