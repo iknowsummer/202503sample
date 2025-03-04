@@ -9,11 +9,13 @@ pd.set_option("display.unicode.east_asian_width", True)
 data_dir = "../data/"
 
 # ファイルパスの指定
-app_dir = "../app/"
+# app_dir = "../app/"
 
 address_pass = os.path.join(data_dir, "住所録.xlsx")
 userlist_pass = os.path.join(data_dir, "顧客リスト.xlsx")
-db_path = os.path.join(app_dir, "db.sqlite3")
+# db_path = os.path.join(app_dir, "data.sqlite3")
+
+db_path = "data.sqlite3"
 
 
 def main():
