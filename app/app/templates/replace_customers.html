@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>excel置き換え</title>
+  </head>
+  <body>
+    <h1>excelでデータベースを置き換え</h1>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="excel_file" accept=".xlsx" />
+      <button type="submit">置き換え</button>
+    </form>
+  </body>
+</html>
