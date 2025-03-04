@@ -1,6 +1,15 @@
 body {
   background-color: #f8f9fa;
-  background-color: #aaa;
-  color: #fff;
+  color: #333;
   font-family: "Roboto", sans-serif;
+}
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  padding: 5px 10px;
 }
