@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ customer.name }}</title>
+  </head>
+  <body>
+    <h1>{{ customer.name }}</h1>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>メールアドレス</th>
+        <th>電話番号</th>
+        <th>住所</th>
+      </tr>
+      <tr>
+        <td>{{ customer.id }}</td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.phone }}</td>
+        <td>{{ customer.address }}</td>
+      </tr>
+    </table>
+  </body>
+</html>

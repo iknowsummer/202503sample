@@ -23,4 +23,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.customer_list, name="home"),  # トップページ用のURLを追加
     path("customers/", views.customer_list, name="customer_list"),
+    path("customer/<int:customer_id>/", views.customer_detail, name="customer_detail"),
 ]
