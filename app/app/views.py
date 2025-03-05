@@ -7,7 +7,13 @@ from .models import Customer
 
 
 def customer_list(request):
-    customers = Customer.objects.all()  # 全件取得
+    query = request.GET.get("name")
+    if query:
+        customers = Customer.objects.filter(company_name__icontains=query)
+    else:
+        # クエリ無しは全件表示
+        customers = Customer.objects.all()
+
     return render(request, "customer_list.html", {"customers": customers})
 
 

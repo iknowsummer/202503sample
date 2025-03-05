@@ -2,6 +2,13 @@
 
 <h1>顧客一覧</h1>
 
+<section id="user-filter">
+  <form method="get" action="{% url 'customer_list' %}">
+    <input type="text" name="name" placeholder="顧客名" value="{{ request.GET.name }}">
+    <button type="submit">検索</button>
+  </form>
+</section>
+
 <section id="customer_lists">
   <div class="customer_lists_row">
     <div>ID</div>
