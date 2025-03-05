@@ -7,9 +7,17 @@ from .models import Customer
 
 
 def customer_list(request):
-    query = request.GET.get("name")
-    if query:
-        customers = Customer.objects.filter(company_name__icontains=query)
+    name = request.GET.get("name")
+    phone = request.GET.get("phone")
+    if name and phone:
+        customers = Customer.objects.filter(
+            company_name__icontains=name,
+            phone_number__icontains=phone
+        )  # fmt:skip
+    elif name:
+        customers = Customer.objects.filter(company_name__icontains=name)
+    elif phone:
+        customers = Customer.objects.filter(phone_number__icontains=phone)
     else:
         # クエリ無しは全件表示
         customers = Customer.objects.all()

@@ -5,6 +5,7 @@
 <section id="user-filter">
   <form method="get" action="{% url 'customer_list' %}">
     <input type="text" name="name" placeholder="顧客名" value="{{ request.GET.name }}">
+    <input type="text" name="phone" placeholder="TEL" value="{{ request.GET.phone }}">
     <button type="submit">検索</button>
   </form>
 </section>
