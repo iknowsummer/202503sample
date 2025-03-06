@@ -14,6 +14,10 @@ python manage.py runserver
 python manage.py makemigrations
 python manage.py migrate
 
+## api 設定済みの URL
+
+http://127.0.0.1:8000/api/customers/1/
+
 # ひとまずの Todo
 
 - [x] データ構成を決定
