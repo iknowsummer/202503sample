@@ -8,6 +8,7 @@
     <input type="text" name="phone" placeholder="TEL" value="{{ request.GET.phone }}">
     <button type="submit">検索</button>
   </form>
+  <a class="all_user_link" href="{% url 'customer_list' %}">全て表示</a>
 </section>
 
 <section id="customer_lists">
