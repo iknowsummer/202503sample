@@ -4,6 +4,17 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+button {
+  transition: 0.3s;
+}
+
+a {
+  color: #333;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 table {
   border: 1px solid #ccc;
   border-collapse: collapse;
