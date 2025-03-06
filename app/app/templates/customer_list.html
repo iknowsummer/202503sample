@@ -1,38 +1,27 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <title>顧客一覧</title>
-  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
-</head>
+{% include 'partials/header.html' with page_title='顧客一覧' %}
 
-<body>
-  <h1>顧客一覧</h1>
-  <table border="1">
-    <tr>
-      <th>id</th>
-      <th>顧客名</th>
-      <th>電話番号</th>
-      <th>住所</th>
-      <th>詳細リンク</th>
-    </tr>
-    {% for customer in customers %}
-    <tr>
-      <td>{{ customer.id }}</td>
-      <td>{{ customer.company_name }}</td>
-      <td>{{ customer.phone_number }}</td>
-      <td>
-        {{ customer.address1 }}<br />
-        {{ customer.address2 }}
-      </td>
-      <td><a href="/customer/{{ customer.id }}">詳細へ</a></td>
-    </tr>
-    {% empty %}
-    <tr>
-      <td colspan="4">登録されている顧客はいません。</td>
-    </tr>
-    {% endfor %}
-  </table>
-</body>
-</html>
+<h1>顧客一覧</h1>
+
+<section id="customer_lists">
+  <div class="customer_lists_row">
+    <div>ID</div>
+    <div>顧客名</div>
+    <div>TEL</div>
+    <div>住所</div>
+  </div>
+  {% for customer in customers %}
+  <a class="customer_lists_row" href="/customer/{{ customer.id }}">
+    <div>{{ customer.id }}</div>
+    <div>{{ customer.company_name }}</div>
+    <div>{{ customer.phone_number }}</div>
+    <div>
+      {{ customer.address1 }}<br />
+      {{ customer.address2 }}
+    </div>
+  </a>
+  {% empty %}
+  <div>登録されている顧客はいません。</div>
+  {% endfor %}
+</section>
+
+{% include 'partials/footer.html' %}

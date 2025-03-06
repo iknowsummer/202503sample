@@ -13,3 +13,23 @@ td,
 th {
   padding: 5px 10px;
 }
+
+#customer_lists {
+  border-top: 1px solid #aaa;
+  max-width: 1440px;
+  margin: auto;
+}
+
+.customer_lists_row {
+  display: grid;
+  grid-template-columns: 4em 1fr 8em 1fr;
+  align-items: center;
+  gap: 0 20px;
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #aaa;
+}
+.customer_lists_row:hover {
+  background-color: #ddd;
+}
