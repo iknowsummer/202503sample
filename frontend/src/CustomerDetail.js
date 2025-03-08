@@ -15,19 +15,36 @@ function CustomerDetail() {
 
   return (
     <div>
-      <h1>顧客詳細</h1>
+      <div>顧客詳細</div>
       {customer ? (
-        <ul>
-          <li>会社名: {customer.company_name}</li>
-          <li>住所: {customer.address1}</li>
-          <li>住所: {customer.address2}</li>
-          <li>TEL: {customer.phone_number}</li>
-          <li>備考: {customer.note}</li>
-        </ul>
+        <>
+          <h1>{customer.company_name}</h1>
+          <dl>
+            <dt>ID</dt>
+            <dd>{customer.id}</dd>
+            <dt>会社名</dt>
+            <dd>{customer.company_name}</dd>
+            <dt>お名前</dt>
+            <dd>{customer.contact_person}</dd>
+            <dt>郵便番号</dt>
+            <dd>{customer.postal_code}</dd>
+            <dt>住所</dt>
+            <dd>
+              {customer.address1} <br />
+              {customer.addres2}
+            </dd>
+            <dt>TEL</dt>
+            <dd>{customer.phone_number}</dd>
+            <dt>備考</dt>
+            <dd>{customer.note}</dd>
+            <dt>請求用会社名</dt>
+            <dd>{customer.billing_name}</dd>
+          </dl>
+        </>
       ) : (
         <p>読み込み中...</p>
       )}
-      <Link to="/">戻る</Link>
+      <Link to="/">一覧へ戻る</Link>
     </div>
   );
 }
