@@ -23,7 +23,7 @@ function CustomerList() {
             <Link to="/customer">顧客一覧</Link>
           </li>
           <li>
-            <Link to="/customer/create">顧客登録</Link>
+            <Link to="/add">顧客登録</Link>
           </li>
         </ul>
       </nav>
