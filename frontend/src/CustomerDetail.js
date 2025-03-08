@@ -72,8 +72,6 @@ function CustomerDetail() {
           <dl className={styles.customerDetail}>
             <dt>ID</dt>
             <dd>{customer.id}</dd>
-            <dt>会社名</dt>
-            <dd>{renderField("company_name", editData.company_name)}</dd>
             <dt>お名前</dt>
             <dd>{renderField("contact_person", editData.contact_person)}</dd>
             <dt>郵便番号</dt>
