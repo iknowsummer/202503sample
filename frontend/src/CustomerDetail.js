@@ -91,7 +91,7 @@ function CustomerDetail() {
       ) : (
         <p>読み込み中...</p>
       )}
-      <Link to="/">一覧へ戻る</Link>
+      <Link to="/customer">一覧へ戻る</Link>
     </div>
   );
 }
