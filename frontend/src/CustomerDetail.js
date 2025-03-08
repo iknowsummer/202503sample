@@ -76,11 +76,10 @@ function CustomerDetail() {
             <dd>{renderField("contact_person", editData.contact_person)}</dd>
             <dt>郵便番号</dt>
             <dd>{renderField("postal_code", editData.postal_code)}</dd>
-            <dt>住所</dt>
-            <dd>
-              {renderField("address1", editData.address1)} <br />
-              {renderField("address2", editData.address2)}
-            </dd>
+            <dt>住所1</dt>
+            <dd>{renderField("address1", editData.address1)}</dd>
+            <dt>住所2</dt>
+            <dd>{renderField("address2", editData.address2)}</dd>
             <dt>TEL</dt>
             <dd>{renderField("phone_number", editData.phone_number)}</dd>
             <dt>備考</dt>
