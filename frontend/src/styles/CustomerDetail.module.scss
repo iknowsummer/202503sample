@@ -37,6 +37,6 @@
     pointer-events: none; // クリックを無効にする
     user-select: none; // テキスト選択を無効にする
     background: none;
-    border: none;
+    border: 1px solid transparent;
   }
 }
