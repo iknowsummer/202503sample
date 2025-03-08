@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import styles from "./styles/CustomerDetail.module.scss";
 import axios from "axios";
 
 function CustomerDetail() {
@@ -19,7 +20,7 @@ function CustomerDetail() {
       {customer ? (
         <>
           <h1>{customer.company_name}</h1>
-          <dl>
+          <dl className={styles.customerDetail}>
             <dt>ID</dt>
             <dd>{customer.id}</dd>
             <dt>会社名</dt>
