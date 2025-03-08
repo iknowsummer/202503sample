@@ -47,7 +47,17 @@ function CustomerDetail() {
             <dt>ID</dt>
             <dd>{customer.id}</dd>
             <dt>会社名</dt>
-            <dd>{customer.company_name}</dd>
+            <dd>
+              {isEditing ? (
+                <input
+                  name="company_name"
+                  value={editData.company_name || ""}
+                  onChange={handleChange}
+                />
+              ) : (
+                customer.company_name
+              )}
+            </dd>
             <dt>お名前</dt>
             <dd>{customer.contact_person}</dd>
             <dt>郵便番号</dt>
