@@ -39,7 +39,7 @@ function CustomerDetail() {
 
   // 各項目のテキスト表示と編集を切替、入力コントロールする関数
   const renderField = (name, value) => {
-    return isEditing ? (
+    return (
       <input
         name={name}
         value={value || ""}
@@ -49,9 +49,8 @@ function CustomerDetail() {
             handleSave();
           }
         }}
+        readOnly={!isEditing}
       />
-    ) : (
-      value
     );
   };
 
