@@ -37,6 +37,24 @@ function CustomerDetail() {
       .catch((error) => console.error(error));
   };
 
+  // 各項目のテキスト表示と編集を切替、入力コントロールする関数
+  const renderField = (name, value) => {
+    return isEditing ? (
+      <input
+        name={name}
+        value={value || ""}
+        onChange={handleChange}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleSave();
+          }
+        }}
+      />
+    ) : (
+      value
+    );
+  };
+
   return (
     <div>
       <div>顧客詳細</div>
@@ -56,37 +74,22 @@ function CustomerDetail() {
             <dt>ID</dt>
             <dd>{customer.id}</dd>
             <dt>会社名</dt>
-            <dd>
-              {isEditing ? (
-                <input
-                  name="company_name"
-                  value={editData.company_name || ""}
-                  onChange={handleChange}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      handleSave();
-                    }
-                  }}
-                />
-              ) : (
-                customer.company_name
-              )}
-            </dd>
+            <dd>{renderField("company_name", editData.company_name)}</dd>
             <dt>お名前</dt>
-            <dd>{customer.contact_person}</dd>
+            <dd>{renderField("contact_person", editData.contact_person)}</dd>
             <dt>郵便番号</dt>
-            <dd>{customer.postal_code}</dd>
+            <dd>{renderField("postal_code", editData.postal_code)}</dd>
             <dt>住所</dt>
             <dd>
-              {customer.address1} <br />
-              {customer.addres2}
+              {renderField("address1", editData.address1)} <br />
+              {renderField("address2", editData.address2)}
             </dd>
             <dt>TEL</dt>
-            <dd>{customer.phone_number}</dd>
+            <dd>{renderField("phone_number", editData.phone_number)}</dd>
             <dt>備考</dt>
-            <dd>{customer.note}</dd>
+            <dd>{renderField("note", editData.note)}</dd>
             <dt>請求用会社名</dt>
-            <dd>{customer.billing_name}</dd>
+            <dd>{renderField("billing_name", editData.billing_name)}</dd>
           </dl>
         </>
       ) : (
