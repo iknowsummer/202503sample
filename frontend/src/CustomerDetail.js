@@ -37,6 +37,16 @@ function CustomerDetail() {
       .catch((error) => console.error(error));
   };
 
+  // 削除ボタンでAPIに削除リクエストを送信
+  const handleDelete = () => {
+    axios
+      .delete(`http://127.0.0.1:8000/api/customers/${id}/`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => console.error(error));
+  };
+
   // 各項目のテキスト表示と編集を切替、入力コントロールする関数
   const renderField = (name, value) => {
     return (
@@ -68,6 +78,9 @@ function CustomerDetail() {
                   onClick={() => setIsEditing(false)}
                 >
                   キャンセル
+                </button>
+                <button onClick={handleDelete} className="deleteButton">
+                  削除
                 </button>
               </>
             ) : (
