@@ -56,12 +56,12 @@ function CustomerDetail() {
 
   return (
     <div>
-      <div>顧客詳細</div>
       {customer ? (
         <>
+          <div>顧客詳細</div>
           <section className="editButtons">
-          {isEditing ? (
-            <>
+            {isEditing ? (
+              <>
                 <button onClick={handleSave}>保存する</button>
                 <button
                   className="cancelButton"
@@ -69,10 +69,10 @@ function CustomerDetail() {
                 >
                   キャンセル
                 </button>
-            </>
-          ) : (
+              </>
+            ) : (
               <button onClick={() => setIsEditing(true)}>編集する</button>
-          )}
+            )}
           </section>
 
           <h1>{customer.company_name}</h1>
