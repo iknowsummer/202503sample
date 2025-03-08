@@ -6,19 +6,42 @@ import axios from "axios";
 function CustomerDetail() {
   const { id } = useParams();
   const [customer, setCustomer] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editData, setEditData] = useState({});
 
   useEffect(() => {
     axios
       .get(`http://127.0.0.1:8000/api/customers/${id}`)
-      .then((response) => setCustomer(response.data))
+      .then((response) => {
+        setCustomer(response.data);
+        setEditData(response.data);
+      })
+
       .catch((error) => console.error(error));
   }, [id]);
+
+  // インプットの変更を管理
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEditData({ ...editData, [name]: value });
+  };
+
 
   return (
     <div>
       <div>顧客詳細</div>
       {customer ? (
         <>
+          {isEditing ? (
+            <>
+              {/* <button onClick={handleSave}>保存</button> */}
+              <button>保存</button>
+              <button onClick={() => setIsEditing(false)}>キャンセル</button>
+            </>
+          ) : (
+            <button onClick={() => setIsEditing(true)}>編集</button>
+          )}
+
           <h1>{customer.company_name}</h1>
           <dl className={styles.customerDetail}>
             <dt>ID</dt>
