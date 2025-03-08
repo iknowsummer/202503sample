@@ -26,6 +26,16 @@ function CustomerDetail() {
     setEditData({ ...editData, [name]: value });
   };
 
+  // 保存ボタンでAPIに更新リクエストを送信
+  const handleSave = () => {
+    axios
+      .put(`http://127.0.0.1:8000/api/customers/${id}/`, editData)
+      .then((response) => {
+        setCustomer(response.data); // 更新後のデータをセット
+        setIsEditing(false); // 編集モードを終了
+      })
+      .catch((error) => console.error(error));
+  };
 
   return (
     <div>
@@ -34,8 +44,7 @@ function CustomerDetail() {
         <>
           {isEditing ? (
             <>
-              {/* <button onClick={handleSave}>保存</button> */}
-              <button>保存</button>
+              <button onClick={handleSave}>保存</button>
               <button onClick={() => setIsEditing(false)}>キャンセル</button>
             </>
           ) : (
@@ -53,6 +62,11 @@ function CustomerDetail() {
                   name="company_name"
                   value={editData.company_name || ""}
                   onChange={handleChange}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handleSave();
+                    }
+                  }}
                 />
               ) : (
                 customer.company_name
