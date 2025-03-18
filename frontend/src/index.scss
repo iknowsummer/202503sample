@@ -75,3 +75,25 @@ th {
     }
   }
 }
+
+.editButtons {
+  margin: 15px 0;
+  display: flex;
+  gap: 10px;
+  button {
+    padding: 10px;
+    // background-color: #1a4a72;
+    background-color: #3383c8;
+    border: 2px solid #3383c8;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  button.cancelButton {
+    // background-color: #666;
+    background-color: #fff;
+    border: 2px solid #3383c8;
+    color: #3383c8;
+  }
+}
