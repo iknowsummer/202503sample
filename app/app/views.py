@@ -3,6 +3,7 @@ import pandas as pd
 from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
 from django.db import connection
+from django.http import HttpResponse
 from rest_framework import viewsets
 from rest_framework.response import Response
 from .serializers import CustomerSerializer
@@ -88,3 +89,35 @@ def replace_customers(request):
 
         return redirect("customer_list")
     return render(request, "replace_customers.html")
+
+
+def export_customers(request):
+    # Customer テーブルのデータを取得
+    customers = Customer.objects.all()
+
+    # pandas DataFrame に変換
+    data = list(
+        customers.values(
+            "company_name",
+            "contact_person",
+            "postal_code",
+            "address1",
+            "address2",
+            "phone_number",
+            "note",
+            "billing_name",
+        )
+    )
+
+    df = pd.DataFrame(data)
+
+    # Excel ファイルとしてレスポンス
+    response = HttpResponse(
+        content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
+    response["Content-Disposition"] = "attachment; filename=customers.xlsx"
+
+    # DataFrame を Excel として保存
+    df.to_excel(response, index=False, sheet_name="Sheet1")
+
+    return response
