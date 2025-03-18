@@ -13,18 +13,33 @@ function CustomerList() {
   }, []);
 
   return (
-    <div>
+    <>
       <h1>顧客一覧</h1>
-      <ul>
+      <section id="customer_lists">
+        <div class="customer_lists_row">
+          <div>ID</div>
+          <div>顧客名</div>
+          <div>TEL</div>
+          <div>住所</div>
+        </div>
+
         {customers.map((customer) => (
-          <li key={customer.id}>
-            <Link to={`/customer/${customer.id}`}>
-              {customer.company_name} - 【tel {customer.phone_number}】
-            </Link>
-          </li>
+          <Link
+            to={`/customer/${customer.id}`}
+            key={customer.id}
+            class="customer_lists_row"
+          >
+            <div>{customer.id}</div>
+            <div>{customer.company_name}</div>
+            <div>{customer.phone_number}</div>
+            <div>
+              {customer.address1} <br />
+              {customer.address2}
+            </div>
+          </Link>
         ))}
-      </ul>
-    </div>
+      </section>
+    </>
   );
 }
 
