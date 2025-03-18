@@ -32,5 +32,6 @@ urlpatterns = [
     path("customer/", TemplateView.as_view(template_name="index.html")),
     path("customer/<int:customer_id>/", TemplateView.as_view(template_name="index.html")),
     path("replace/", views.replace_customers, name="replace_customers"),
+    path('export_customers/', views.export_customers, name='export_customers'),
     path('api/', include(router.urls)),
 ]  # fmt: skip
