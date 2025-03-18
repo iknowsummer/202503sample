@@ -1,0 +1,39 @@
+version: "3.7"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: pB9sL7dM3+T@
+      MYSQL_DATABASE: my_database
+      # MYSQL_CHARSET: utf8mb4
+      # MYSQL_COLLATION: utf8mb4_unicode_ci
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
+    ports:
+      - "3306:3306"
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-container
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: pB9sL7dM3+T@
+    ports:
+      - "8080:80"
+    networks:
+      - app-network
+    depends_on:
+      - mysql
+
+volumes:
+  mysql-data:
+
+networks:
+  app-network:
+    driver: bridge
