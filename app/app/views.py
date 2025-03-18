@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import urllib.parse
 from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
 from django.db import connection
@@ -111,11 +112,28 @@ def export_customers(request):
 
     df = pd.DataFrame(data)
 
+    columns = [
+        "会社名",
+        "お名前",
+        "郵便番号",
+        "住所",
+        "アパート・ビル・建物名など",
+        "電話番号",
+        "備考",
+        "請求用会社名",
+    ]
+
+    df.columns = columns
+
+    # 日本語ファイル名をURLエンコード
+    filename = "住所録.xlsx"
+    encoded_filename = urllib.parse.quote(filename)
+
     # Excel ファイルとしてレスポンス
     response = HttpResponse(
         content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     )
-    response["Content-Disposition"] = "attachment; filename=customers.xlsx"
+    response["Content-Disposition"] = f"attachment; filename*=UTF-8''{encoded_filename}"
 
     # DataFrame を Excel として保存
     df.to_excel(response, index=False, sheet_name="Sheet1")
