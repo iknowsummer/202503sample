@@ -1,0 +1,42 @@
+.customerDetail {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 8px 15px;
+  dt,
+  dd,
+  input {
+    font-size: 16px;
+    height: 50px;
+  }
+  dt,
+  dd {
+    display: flex;
+    align-items: center;
+  }
+  dd {
+    margin: 0;
+    box-sizing: border-box;
+  }
+  dt {
+    background-color: #ddd;
+    padding: 10px 16px;
+    box-sizing: border-box;
+  }
+  input {
+    background-color: transparent;
+    padding: 8px 16px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 8px;
+    width: 600px;
+    line-height: 1.5;
+  }
+  input[readonly] {
+    pointer-events: none; // クリックを無効にする
+    user-select: none; // テキスト選択を無効にする
+    background: none;
+    border: 1px solid transparent;
+  }
+}

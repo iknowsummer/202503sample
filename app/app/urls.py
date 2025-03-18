@@ -16,13 +16,21 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.views.generic import TemplateView
+from rest_framework.routers import DefaultRouter
 from . import views
+from .views import CustomerViewSet
+
+router = DefaultRouter()
+router.register(r"customers", CustomerViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", views.customer_list, name="home"),  # トップページ用のURLを追加
-    path("customers/", views.customer_list, name="customer_list"),
-    path("customer/<int:customer_id>/", views.customer_detail, name="customer_detail"),
+    path("", views.home, name="home"),  # トップページ用のURLを追加
+    # path("customers/", views.customer_list, name="customer_list"),
+    path("customer/", TemplateView.as_view(template_name="index.html")),
+    path("customer/<int:customer_id>/", TemplateView.as_view(template_name="index.html")),
     path("replace/", views.replace_customers, name="replace_customers"),
+    path('api/', include(router.urls)),
 ]  # fmt: skip
