@@ -88,7 +88,7 @@ def replace_customers(request):
         if os.path.exists(file_path):
             os.remove(file_path)
 
-        return redirect("customer_list")
+        return redirect("/customer/")
     return render(request, "replace_customers.html")
 
 
