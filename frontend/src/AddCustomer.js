@@ -3,22 +3,32 @@ import { Link, useParams } from "react-router-dom";
 import styles from "./styles/CustomerDetail.module.scss";
 import axios from "axios";
 
+// 初期化用のオブジェクトを定義
+const initialEditData = {
+  company_name: "",
+  contact_person: "",
+  postal_code: "",
+  address1: "",
+  address2: "",
+  phone_number: "",
+  note: "",
+  billing_name: "",
+};
+
 function CustomerDetail() {
-  const { id } = useParams();
   const [customer, setCustomer] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
-  const [editData, setEditData] = useState({});
+  const [editData, setEditData] = useState({ initialEditData });
 
-  useEffect(() => {
-    axios
-      .get(`http://127.0.0.1:8000/api/customers/${id}`)
-      .then((response) => {
-        setCustomer(response.data);
-        setEditData(response.data);
-      })
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://127.0.0.1:8000/api/customers/${id}`)
+  //     .then((response) => {
+  //       setCustomer(response.data);
+  //       setEditData(response.data);
+  //     })
 
-      .catch((error) => console.error(error));
-  }, [id]);
+  //     .catch((error) => console.error(error));
+  // }, [id]);
 
   // インプットの変更を管理
   const handleChange = (e) => {
@@ -29,20 +39,10 @@ function CustomerDetail() {
   // 保存ボタンでAPIに更新リクエストを送信
   const handleSave = () => {
     axios
-      .put(`http://127.0.0.1:8000/api/customers/${id}/`, editData)
+      .post(`http://127.0.0.1:8000/api/customers/`, editData)
       .then((response) => {
         setCustomer(response.data); // 更新後のデータをセット
-        setIsEditing(false); // 編集モードを終了
-      })
-      .catch((error) => console.error(error));
-  };
-
-  // 削除ボタンでAPIに削除リクエストを送信
-  const handleDelete = () => {
-    axios
-      .delete(`http://127.0.0.1:8000/api/customers/${id}/`)
-      .then((response) => {
-        console.log(response);
+        setEditData(initialEditData); // 入力欄を空欄へ初期化
       })
       .catch((error) => console.error(error));
   };
@@ -52,46 +52,32 @@ function CustomerDetail() {
     return (
       <input
         name={name}
-        value={value || ""}
+        value={value}
         onChange={handleChange}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            handleSave();
+            e.target.blur();
           }
         }}
-        readOnly={!isEditing}
       />
     );
   };
 
   return (
     <div>
-      {customer ? (
+      {
         <>
-          <div>顧客詳細</div>
+          <div>新規登録</div>
           <section className="editButtons">
-            {isEditing ? (
-              <>
-                <button onClick={handleSave}>保存する</button>
-                <button
-                  className="cancelButton"
-                  onClick={() => setIsEditing(false)}
-                >
-                  キャンセル
-                </button>
-                <button onClick={handleDelete} className="deleteButton">
-                  削除
-                </button>
-              </>
-            ) : (
-              <button onClick={() => setIsEditing(true)}>編集する</button>
-            )}
+            <button onClick={handleSave}>追加する</button>
+            {/* 登録時にその旨をメッセージ表示 */}
+            {customer && <p>登録しました</p>}
           </section>
 
-          <h1>{customer.company_name}</h1>
+          <h1>新規登録</h1>
           <dl className={styles.customerDetail}>
-            <dt>ID</dt>
-            <dd>{customer.id}</dd>
+            <dt>会社名</dt>
+            <dd>{renderField("company_name", editData.company_name)}</dd>
             <dt>お名前</dt>
             <dd>{renderField("contact_person", editData.contact_person)}</dd>
             <dt>郵便番号</dt>
@@ -108,9 +94,7 @@ function CustomerDetail() {
             <dd>{renderField("billing_name", editData.billing_name)}</dd>
           </dl>
         </>
-      ) : (
-        <p>読み込み中...</p>
-      )}
+      }
       <Link to="/customer">一覧へ戻る</Link>
     </div>
   );

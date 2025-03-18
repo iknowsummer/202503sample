@@ -14,6 +14,19 @@ function CustomerList() {
 
   return (
     <>
+      <nav id="global_navi">
+        <ul>
+          <li>
+            <a href="http://localhost:8000/">ホーム</a>
+          </li>
+          <li>
+            <Link to="/customer">顧客一覧</Link>
+          </li>
+          <li>
+            <Link to="/add">顧客登録</Link>
+          </li>
+        </ul>
+      </nav>
       <h1>顧客一覧</h1>
       <section id="customer_lists">
         <div class="customer_lists_row">
