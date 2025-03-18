@@ -1,0 +1,14 @@
+.customerDetail {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 8px 15px;
+  dt,
+  dd {
+    margin: 0;
+  }
+  dt {
+    background-color: #ddd;
+    padding: 8px 16px;
+  }
+}
