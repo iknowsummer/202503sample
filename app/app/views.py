@@ -62,9 +62,9 @@ def replace_customers(request):
             # 既存データを削除
             Customer.objects.all().delete()
 
-            # IDのカウンターをリセット
+            # オートインクリメントカウンターをリセット
             with connection.cursor() as cursor:
-                cursor.execute("DELETE FROM sqlite_sequence WHERE name='app_customer'")
+                cursor.execute("ALTER TABLE app_customer AUTO_INCREMENT = 1;")
 
             # Excel 読み込みと保存（bulk_create）
             df = pd.read_excel(file_path)
