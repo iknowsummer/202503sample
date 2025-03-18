@@ -18,6 +18,10 @@ class CustomerViewSet(viewsets.ModelViewSet):
     #     return Response(status=404)  # 404 エラーを返す
 
 
+def home(request):
+    return render(request, "home.html")
+
+
 def customer_list(request):
     name = request.GET.get("name")
     phone = request.GET.get("phone")
