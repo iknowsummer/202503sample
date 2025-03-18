@@ -3,8 +3,14 @@ import pandas as pd
 from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
 from django.db import connection
+from rest_framework import viewsets
+from .serializers import CustomerSerializer
 from .models import Customer
 
+
+class CustomerViewSet(viewsets.ModelViewSet):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
 
 def customer_list(request):
     name = request.GET.get("name")
