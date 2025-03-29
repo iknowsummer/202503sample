@@ -29,6 +29,21 @@ services:
     depends_on:
       - mysql
 
+  web:
+    build: .
+    container_name: django-container
+    command: python app/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+
 volumes:
   mysql-data:
 
