@@ -11,20 +11,21 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 import os
+
+from dotenv import load_dotenv
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv(BASE_DIR / ".env")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-0pyk-x6mz30on_5i8##ggq+$bsdpwiwt*l_6x5yuky&2+h&$t1"
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = []
 
@@ -62,7 +63,7 @@ ROOT_URLCONF = "app.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "../frontend/build/")],
+        "DIRS": [os.path.join(BASE_DIR, "app/react_build/")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -84,11 +85,11 @@ WSGI_APPLICATION = "app.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "my_database",
-        "USER": "root",
-        "PASSWORD": "pB9sL7dM3+T@",
-        "HOST": "localhost",
-        "PORT": "3306",
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "HOST": os.getenv("DB_HOST"),
+        "PORT": os.getenv("DB_PORT"),
         "OPTIONS": {
             "charset": "utf8mb4",
         },
@@ -132,7 +133,7 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "../frontend/build/static")]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "app/react_build/")]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
