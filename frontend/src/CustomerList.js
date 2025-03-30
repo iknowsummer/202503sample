@@ -17,7 +17,7 @@ function CustomerList() {
       <nav id="global_navi">
         <ul>
           <li>
-            <a href="http://localhost:8000/">ホーム</a>
+            <a href="/">ホーム</a>
           </li>
           <li>
             <Link to="/customer">顧客一覧</Link>
