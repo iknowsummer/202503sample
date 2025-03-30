@@ -16,5 +16,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app/ ./app/
 
-CMD ["sh", "-c", "python app/manage.py migrate && python app/manage.py runserver 0.0.0.0:8000"]
-# CMD ["sh", "-c", "python app/manage.py collectstatic --noinput && python app/manage.py migrate && python app/manage.py runserver 0.0.0.0:8000"]
+# CMD ["sh", "-c", "python app/manage.py migrate && python app/manage.py runserver 0.0.0.0:8000"]
+CMD ["sh", "-c", "python app/manage.py collectstatic --noinput && python app/manage.py migrate && python app/manage.py runserver 0.0.0.0:8000"]
