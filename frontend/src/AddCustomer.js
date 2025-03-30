@@ -22,6 +22,7 @@ function CustomerDetail() {
   // useEffect(() => {
   //   axios
   //     .get(`http://127.0.0.1:8000/api/customers/${id}`)
+  //     .get(`https://userlist-web-xxxxx.run.app/api/customers/${id}`)
   //     .then((response) => {
   //       setCustomer(response.data);
   //       setEditData(response.data);
@@ -39,7 +40,12 @@ function CustomerDetail() {
   // 保存ボタンでAPIに更新リクエストを送信
   const handleSave = () => {
     axios
-      .post(`http://127.0.0.1:8000/api/customers/`, editData)
+      // .post(`http://127.0.0.1:8000/api/customers/`, editData)
+      // .post(`https://userlist-web-xxxxx.run.app/api/customers/`, editData)
+      .post(
+        `https://userlist-web-915364762630.us-central1.run.app/api/customers/`,
+        editData
+      )
       .then((response) => {
         setCustomer(response.data); // 更新後のデータをセット
         setEditData(initialEditData); // 入力欄を空欄へ初期化

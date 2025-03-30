@@ -11,7 +11,10 @@ function CustomerDetail() {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/api/customers/${id}`)
+      // .get(`http://127.0.0.1:8000/api/customers/${id}`)
+      .get(
+        `https://userlist-web-915364762630.us-central1.run.app/api/customers/${id}`
+      )
       .then((response) => {
         setCustomer(response.data);
         setEditData(response.data);
@@ -29,7 +32,11 @@ function CustomerDetail() {
   // 保存ボタンでAPIに更新リクエストを送信
   const handleSave = () => {
     axios
-      .put(`http://127.0.0.1:8000/api/customers/${id}/`, editData)
+      // .put(`http://127.0.0.1:8000/api/customers/${id}/`, editData)
+      .put(
+        `https://userlist-web-915364762630.us-central1.run.app/api/customers/${id}/`,
+        editData
+      )
       .then((response) => {
         setCustomer(response.data); // 更新後のデータをセット
         setIsEditing(false); // 編集モードを終了
@@ -40,7 +47,10 @@ function CustomerDetail() {
   // 削除ボタンでAPIに削除リクエストを送信
   const handleDelete = () => {
     axios
-      .delete(`http://127.0.0.1:8000/api/customers/${id}/`)
+      // .delete(`http://127.0.0.1:8000/api/customers/${id}/`)
+      .delete(
+        `https://userlist-web-915364762630.us-central1.run.app/api/customers/${id}/`
+      )
       .then((response) => {
         console.log(response);
       })
