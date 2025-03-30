@@ -11,7 +11,10 @@ function CustomerDetail() {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/api/customers/${id}`)
+      // .get(`http://127.0.0.1:8000/api/customers/${id}`)
+      .get(
+        `https://userlist-web-915364762630.us-central1.run.app/api/customers/${id}`
+      )
       .then((response) => {
         setCustomer(response.data);
         setEditData(response.data);
@@ -29,7 +32,11 @@ function CustomerDetail() {
   // 保存ボタンでAPIに更新リクエストを送信
   const handleSave = () => {
     axios
-      .put(`http://127.0.0.1:8000/api/customers/${id}/`, editData)
+      // .put(`http://127.0.0.1:8000/api/customers/${id}/`, editData)
+      .put(
+        `https://userlist-web-915364762630.us-central1.run.app/api/customers/${id}/`,
+        editData
+      )
       .then((response) => {
         setCustomer(response.data); // 更新後のデータをセット
         setIsEditing(false); // 編集モードを終了
@@ -40,7 +47,10 @@ function CustomerDetail() {
   // 削除ボタンでAPIに削除リクエストを送信
   const handleDelete = () => {
     axios
-      .delete(`http://127.0.0.1:8000/api/customers/${id}/`)
+      // .delete(`http://127.0.0.1:8000/api/customers/${id}/`)
+      .delete(
+        `https://userlist-web-915364762630.us-central1.run.app/api/customers/${id}/`
+      )
       .then((response) => {
         console.log(response);
       })
@@ -68,26 +78,8 @@ function CustomerDetail() {
     <div>
       {customer ? (
         <>
+          <Link to="/customer">一覧へ戻る</Link>
           <div>顧客詳細</div>
-          <section className="editButtons">
-            {isEditing ? (
-              <>
-                <button onClick={handleSave}>保存する</button>
-                <button
-                  className="cancelButton"
-                  onClick={() => setIsEditing(false)}
-                >
-                  キャンセル
-                </button>
-                <button onClick={handleDelete} className="deleteButton">
-                  削除
-                </button>
-              </>
-            ) : (
-              <button onClick={() => setIsEditing(true)}>編集する</button>
-            )}
-          </section>
-
           <h1>{customer.company_name}</h1>
           <dl className={styles.customerDetail}>
             <dt>ID</dt>
@@ -107,11 +99,28 @@ function CustomerDetail() {
             <dt>請求用会社名</dt>
             <dd>{renderField("billing_name", editData.billing_name)}</dd>
           </dl>
+          <section className="editButtons">
+            {isEditing ? (
+              <>
+                <button onClick={handleSave}>保存する</button>
+                <button
+                  className="cancelButton"
+                  onClick={() => setIsEditing(false)}
+                >
+                  キャンセル
+                </button>
+                <button onClick={handleDelete} className="deleteButton">
+                  削除
+                </button>
+              </>
+            ) : (
+              <button onClick={() => setIsEditing(true)}>編集する</button>
+            )}
+          </section>
         </>
       ) : (
         <p>読み込み中...</p>
       )}
-      <Link to="/customer">一覧へ戻る</Link>
     </div>
   );
 }

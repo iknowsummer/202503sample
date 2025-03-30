@@ -7,7 +7,13 @@ function CustomerList() {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/customers/")
+      // .get("http://127.0.0.1:8000/api/customers/")
+      // .get(`${process.env.REACT_APP_API_URL}/api/customers/`)
+
+      // .get("https://userlist-web-xxxxx.run.app/api/customers/")
+      .get(
+        "https://userlist-web-915364762630.us-central1.run.app/api/customers/"
+      )
       .then((response) => setCustomers(response.data))
       .catch((error) => console.error(error));
   }, []);
@@ -17,7 +23,7 @@ function CustomerList() {
       <nav id="global_navi">
         <ul>
           <li>
-            <a href="http://localhost:8000/">ホーム</a>
+            <a href="/">トップページ</a>
           </li>
           <li>
             <Link to="/customer">顧客一覧</Link>

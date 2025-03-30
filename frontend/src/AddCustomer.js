@@ -22,6 +22,7 @@ function CustomerDetail() {
   // useEffect(() => {
   //   axios
   //     .get(`http://127.0.0.1:8000/api/customers/${id}`)
+  //     .get(`https://userlist-web-xxxxx.run.app/api/customers/${id}`)
   //     .then((response) => {
   //       setCustomer(response.data);
   //       setEditData(response.data);
@@ -39,7 +40,12 @@ function CustomerDetail() {
   // 保存ボタンでAPIに更新リクエストを送信
   const handleSave = () => {
     axios
-      .post(`http://127.0.0.1:8000/api/customers/`, editData)
+      // .post(`http://127.0.0.1:8000/api/customers/`, editData)
+      // .post(`https://userlist-web-xxxxx.run.app/api/customers/`, editData)
+      .post(
+        `https://userlist-web-915364762630.us-central1.run.app/api/customers/`,
+        editData
+      )
       .then((response) => {
         setCustomer(response.data); // 更新後のデータをセット
         setEditData(initialEditData); // 入力欄を空欄へ初期化
@@ -67,12 +73,7 @@ function CustomerDetail() {
     <div>
       {
         <>
-          <div>新規登録</div>
-          <section className="editButtons">
-            <button onClick={handleSave}>追加する</button>
-            {/* 登録時にその旨をメッセージ表示 */}
-            {customer && <p>登録しました</p>}
-          </section>
+          <Link to="/customer">一覧へ戻る</Link>
 
           <h1>新規登録</h1>
           <dl className={styles.customerDetail}>
@@ -93,9 +94,13 @@ function CustomerDetail() {
             <dt>請求用会社名</dt>
             <dd>{renderField("billing_name", editData.billing_name)}</dd>
           </dl>
+          <section className="editButtons">
+            <button onClick={handleSave}>追加する</button>
+            {/* 登録時にその旨をメッセージ表示 */}
+            {customer && <p>登録しました</p>}
+          </section>
         </>
       }
-      <Link to="/customer">一覧へ戻る</Link>
     </div>
   );
 }
