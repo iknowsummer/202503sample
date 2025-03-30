@@ -78,26 +78,8 @@ function CustomerDetail() {
     <div>
       {customer ? (
         <>
+          <Link to="/customer">一覧へ戻る</Link>
           <div>顧客詳細</div>
-          <section className="editButtons">
-            {isEditing ? (
-              <>
-                <button onClick={handleSave}>保存する</button>
-                <button
-                  className="cancelButton"
-                  onClick={() => setIsEditing(false)}
-                >
-                  キャンセル
-                </button>
-                <button onClick={handleDelete} className="deleteButton">
-                  削除
-                </button>
-              </>
-            ) : (
-              <button onClick={() => setIsEditing(true)}>編集する</button>
-            )}
-          </section>
-
           <h1>{customer.company_name}</h1>
           <dl className={styles.customerDetail}>
             <dt>ID</dt>
@@ -117,11 +99,28 @@ function CustomerDetail() {
             <dt>請求用会社名</dt>
             <dd>{renderField("billing_name", editData.billing_name)}</dd>
           </dl>
+          <section className="editButtons">
+            {isEditing ? (
+              <>
+                <button onClick={handleSave}>保存する</button>
+                <button
+                  className="cancelButton"
+                  onClick={() => setIsEditing(false)}
+                >
+                  キャンセル
+                </button>
+                <button onClick={handleDelete} className="deleteButton">
+                  削除
+                </button>
+              </>
+            ) : (
+              <button onClick={() => setIsEditing(true)}>編集する</button>
+            )}
+          </section>
         </>
       ) : (
         <p>読み込み中...</p>
       )}
-      <Link to="/customer">一覧へ戻る</Link>
     </div>
   );
 }

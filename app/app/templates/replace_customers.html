@@ -7,12 +7,12 @@
 </head>
 
 <body>
+  <a href="/">トップへ戻る</a>
   <h1>excelでデータベースを置き換え</h1>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="file" name="excel_file" accept=".xlsx" />
     <button type="submit">置き換え</button>
   </form>
-  <a href="/">トップへ戻る</a>
 </body>
 </html>

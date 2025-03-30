@@ -23,7 +23,7 @@ function CustomerList() {
       <nav id="global_navi">
         <ul>
           <li>
-            <a href="/">ホーム</a>
+            <a href="/">トップページ</a>
           </li>
           <li>
             <Link to="/customer">顧客一覧</Link>

@@ -73,12 +73,7 @@ function CustomerDetail() {
     <div>
       {
         <>
-          <div>新規登録</div>
-          <section className="editButtons">
-            <button onClick={handleSave}>追加する</button>
-            {/* 登録時にその旨をメッセージ表示 */}
-            {customer && <p>登録しました</p>}
-          </section>
+          <Link to="/customer">一覧へ戻る</Link>
 
           <h1>新規登録</h1>
           <dl className={styles.customerDetail}>
@@ -99,9 +94,13 @@ function CustomerDetail() {
             <dt>請求用会社名</dt>
             <dd>{renderField("billing_name", editData.billing_name)}</dd>
           </dl>
+          <section className="editButtons">
+            <button onClick={handleSave}>追加する</button>
+            {/* 登録時にその旨をメッセージ表示 */}
+            {customer && <p>登録しました</p>}
+          </section>
         </>
       }
-      <Link to="/customer">一覧へ戻る</Link>
     </div>
   );
 }
